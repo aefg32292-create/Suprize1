@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Special Surprise ❤️</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+overflow:hidden;
+background:linear-gradient(
+135deg,
+#ffe4e6,
+#fff1f2,
+#fecdd3
+);
+
+font-family:sans-serif;
+}
+
+.page{
+position:absolute;
+inset:0;
+display:none;
+
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+padding:20px;
+
+text-align:center;
+}
+
+.active{
+display:flex;
+}
+
+.glass{
+background:rgba(255,255,255,.45);
+
+backdrop-filter:blur(15px);
+
+padding:30px;
+
+border-radius:30px;
+
+width:90%;
+max-width:420px;
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.1);
+}
+
+.photo{
+width:100%;
+height:320px;
+
+object-fit:cover;
+
+border-radius:20px;
+}
+
+.doorWrap{
+display:flex;
+perspective:1200px;
+}
+
+.door{
+
+width:150px;
+height:300px;
+
+background:
+linear-gradient(
+to bottom,
+#92400e,
+#78350f
+);
+
+transition:2s;
+}
+
+.left{
+transform-origin:left;
+}
+
+.right{
+transform-origin:right;
+}
+
+.openL{
+transform:rotateY(-120deg);
+}
+
+.openR{
+transform:rotateY(120deg);
+}
+
+button{
+padding:12px 20px;
+
+border:none;
+
+border-radius:14px;
+
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- PAGE1 -->
+
+<div id="p1" class="page active">
+
+<div class="glass">
+
+<h1 class="text-4xl mb-6">
+Knock Knock...
+</h1>
+
+<h2 class="text-2xl mb-6">
+Who is there?
+</h2>
+
+<div>
+
+<p class="text-2xl mb-5">
+Aditi this side 👋
+</p>
+
+<button
+onclick="showPage(2)"
+class="bg-rose-500 text-white">
+
+Continue
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PAGE2 -->
+
+<div id="p2" class="page">
+
+<div class="glass">
+
+<h1 class="text-5xl">
+Oh nice ✨
+</h1>
+
+</div>
+
+</div>
+
+<!-- PAGE3 -->
+
+<div id="p3" class="page">
+
+<div class="glass">
+
+<h1 class="text-3xl mb-4">
+
+Welcome Aditi ❤️
+
+</h1>
+
+<img
+id="slide"
+
+class="photo"
+
+src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=700">
+
+<p class="mt-5">
+
+Your short hair looks amazing on you ✨
+
+</p>
+
+<p
+style="
+font-family:
+'Dancing Script'
+">
+
+Chhote baalon mein bhi ek alag si ada hai,
+Sach kahu usi mein teri sabse pyari wajah hai ❤️
+
+</p>
+
+</div>
+
+</div>
+
+<!-- PAGE4 -->
+
+<div id="p4" class="page">
+
+<div class="glass">
+
+<h1 class="text-3xl mb-5">
+
+Hold Heart ❤️
+
+</h1>
+
+<button
+
+id="heart"
+
+style="
+width:120px;
+height:120px;
+border-radius:50%;
+font-size:40px;
+background:#f43f5e;
+color:white;
+"
+
+>
+
+❤️
+
+</button>
+
+<p id="holdText">
+
+Hold to continue
+
+</p>
+
+</div>
+
+</div>
+
+<!-- PAGE5 -->
+
+<div id="p5" class="page">
+
+<div class="glass">
+
+<h1 class="mb-5">
+
+Kurkure person 🌶️
+or
+Chips person 🍟 ?
+
+</h1>
+
+<div class="flex gap-4 justify-center">
+
+<button
+onclick="saveChoice('Kurkure')"
+
+class="bg-orange-400">
+
+Kurkure
+
+</button>
+
+<button
+onclick="saveChoice('Chips')"
+
+class="bg-yellow-400">
+
+Chips
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TIMER -->
+
+<div id="p6" class="page">
+
+<div class="glass">
+
+<h1>
+
+Wait ❤️
+
+</h1>
+
+<h2
+id="timer"
+
+class="text-6xl">
+
+01:00
+
+</h2>
+
+</div>
+
+</div>
+
+<!-- FINAL -->
+
+<div
+id="p7"
+class="page"
+style="
+background:black;
+color:white;
+">
+
+<div class="doorWrap">
+
+<div
+id="dl"
+class="door left">
+</div>
+
+<div
+id="dr"
+class="door right">
+</div>
+
+</div>
+
+<h1
+id="finalText"
+
+style="
+opacity:0;
+margin-top:40px;
+font-size:40px;
+">
+
+Open your room's door 🚪✨
+
+</h1>
+
+</div>
+
+<!-- DASHBOARD -->
+
+<div
+id="dashboard"
+
+style="
+position:fixed;
+top:20px;
+right:20px;
+background:white;
+padding:20px;
+border-radius:20px;
+max-width:250px;
+">
+
+<h3>
+
+Responses
+
+</h3>
+
+<div id="responses">
+
+</div>
+
+</div>
+
+<script>
+
+function showPage(n){
+
+document
+.querySelectorAll(".page")
+
+.forEach(x=>
+x.classList.remove(
+"active"
+));
+
+document
+.getElementById(
+"p"+n
+)
+
+.classList.add(
+"active"
+);
+
+}
+
+setTimeout(()=>{
+
+showPage(3);
+
+slideShow();
+
+setTimeout(
+()=>showPage(4),
+
+8000
+
+);
+
+},4000);
+
+const imgs=[
+
+"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=700",
+
+"https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=700",
+
+"https://images.unsplash.com/photo-1517841905240-472988babdf9?w=700"
+
+];
+
+let i=0;
+
+function slideShow(){
+
+setInterval(()=>{
+
+i=(i+1)%imgs.length;
+
+slide.src=imgs[i];
+
+},2000);
+
+}
+
+let hold;
+
+heart.onmousedown=()=>{
+
+let p=0;
+
+hold=setInterval(()=>{
+
+p+=10;
+
+holdText.innerHTML=
+p+"%";
+
+if(p>=100){
+
+clearInterval(
+hold
+);
+
+showPage(5);
+
+}
+
+},200);
+
+};
+
+heart.onmouseup=()=>{
+
+clearInterval(
+hold
+);
+
+};
+
+function saveChoice(x){
+
+let arr=
+
+JSON.parse(
+
+localStorage.getItem(
+"choices"
+)
+
+)||[];
+
+arr.push({
+
+choice:x,
+
+time:
+new Date()
+.toLocaleString()
+
+});
+
+localStorage.setItem(
+"choices",
+
+JSON.stringify(
+arr
+)
+
+);
+
+loadResponses();
+
+showPage(6);
+
+startTimer();
+
+}
+
+function loadResponses(){
+
+let data=
+
+JSON.parse(
+
+localStorage.getItem(
+"choices"
+)
+
+)||[];
+
+responses.innerHTML="";
+
+data.forEach((v,i)=>{
+
+responses.innerHTML+=`
+
+<div style="
+margin:8px;
+padding:8px;
+background:#ffe4e6;
+border-radius:10px">
+
+${v.choice}
+
+<button
+onclick=
+"del(${i})">
+
+❌
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+function del(i){
+
+let d=
+
+JSON.parse(
+
+localStorage.getItem(
+"choices"
+)
+
+);
+
+d.splice(i,1);
+
+localStorage.setItem(
+"choices",
+
+JSON.stringify(d)
+);
+
+loadResponses();
+
+}
+
+loadResponses();
+
+let t=60;
+
+function startTimer(){
+
+let x=
+
+setInterval(()=>{
+
+t--;
+
+let m=
+String(
+Math.floor(t/60)
+).padStart(
+2,
+0
+);
+
+let s=
+String(
+t%60
+).padStart(
+2,
+0
+);
+
+timer.innerHTML=
+`${m}:${s}`;
+
+if(t<=0){
+
+clearInterval(
+x
+);
+
+showPage(7);
+
+setTimeout(()=>{
+
+dl.classList
+.add(
+"openL"
+);
+
+dr.classList
+.add(
+"openR"
+);
+
+setTimeout(()=>{
+
+finalText.style.opacity=1;
+
+},2000);
+
+},1000);
+
+}
+
+},1000);
+
+}
+
+</script>
+
+</body>
+</html>
